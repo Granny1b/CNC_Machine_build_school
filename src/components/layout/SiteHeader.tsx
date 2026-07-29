@@ -56,7 +56,9 @@ export function SiteHeader() {
         <div className="flex h-16 items-center justify-between gap-4">
           <Wordmark />
 
-          <nav aria-label="Primary" className="hidden lg:block">
+          {/* Eleven destinations do not fit a 1024px bar at this type size, so
+              the drawer carries the nav up to 1280px. */}
+          <nav aria-label="Primary" className="hidden xl:block">
             <ul className="flex items-center gap-0.5">
               {desktopNav.map((item) => {
                 const active = isActive(item.href) && item.label !== "Start Learning";
@@ -84,7 +86,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
-            className="flex items-center gap-2 rounded-sm border border-rule-strong px-3 py-1.5 font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft lg:hidden"
+            className="flex items-center gap-2 rounded-sm border border-rule-strong px-3 py-1.5 font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft xl:hidden"
           >
             {open ? "Close" : "Menu"}
             <svg width="12" height="10" viewBox="0 0 12 10" aria-hidden="true">
@@ -101,7 +103,7 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-rule bg-paper-raised lg:hidden"
+        className="border-t border-rule bg-paper-raised xl:hidden"
       >
         <Container width="wide">
           <nav aria-label="Primary, mobile">

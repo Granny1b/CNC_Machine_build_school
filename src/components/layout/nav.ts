@@ -16,6 +16,9 @@ export const primaryNav: NavItem[] = [
   { href: "/learn", label: "Learning Path", blurb: "All twenty levels" },
   { href: "/explorer", label: "Machine Explorer", blurb: "Inspect every component" },
   { href: "/calculators", label: "Calculators", blurb: "Machining and axis sizing" },
+  // SPEC section 8's route map lists no home for the troubleshooting scenario
+  // player of section 11, so it gains a route of its own here.
+  { href: "/troubleshooting", label: "Troubleshooting", blurb: "Diagnose a real fault" },
   { href: "/simulator", label: "G-code Simulator", blurb: "In development" },
   { href: "/project", label: "Design Your CNC", blurb: "The twenty-stage project" },
   { href: "/glossary", label: "Glossary", blurb: "Every term, in plain words" },
