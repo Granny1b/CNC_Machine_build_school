@@ -28,6 +28,9 @@ const config: Config = {
         mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
       },
       letterSpacing: { tightest: "-0.035em", eyebrow: "0.14em" },
+      // The 480px breakpoint of SPEC 5.3, below which the axis scale degrades
+      // to a labelled bar. Tailwind's smallest default stop is 640px.
+      screens: { xs: "480px" },
       backgroundImage: {
         grid: `linear-gradient(to right, rgba(23,57,91,0.055) 1px, transparent 1px),
                linear-gradient(to bottom, rgba(23,57,91,0.055) 1px, transparent 1px)`,
