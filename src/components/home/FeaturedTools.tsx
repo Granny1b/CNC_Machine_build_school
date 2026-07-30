@@ -93,7 +93,7 @@ export function FeaturedTools() {
         move, or work a fault to its cause.
       </p>
 
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (
           <Card as="li" key={tool.title} tone="raised" interactive className="relative">
             <CardBody className="flex h-full flex-col">

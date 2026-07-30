@@ -80,7 +80,7 @@ export default function SimulatorPage() {
 
       <Container as="section" className="py-10 sm:py-14">
         <h2 className="text-[22px] font-semibold sm:text-[26px]">What it will do</h2>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {PLANNED.map((item) => (
             <li key={item.title}>
               <Card tone="raised" className="h-full">

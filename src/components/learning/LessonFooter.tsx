@@ -53,7 +53,7 @@ export function LessonFooter({ slug, nextSlug }: LessonFooterProps) {
 
   return (
     <Card as="section" tone="raised">
-      <CardBody className="grid gap-8 py-6 sm:py-7 md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-10">
+      <CardBody className="grid grid-cols-1 gap-8 py-6 sm:py-7 md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-10">
         <div>
           <p className="eyebrow">Finished reading?</p>
           <h2 className="mt-2 text-[20px] font-semibold sm:text-[22px]">

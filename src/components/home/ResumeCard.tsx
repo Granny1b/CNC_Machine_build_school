@@ -154,7 +154,7 @@ export function ResumeCard() {
 function Shell({ children }: { children: ReactNode }) {
   return (
     <Card tone="raised">
-      <CardBody className="grid min-h-[19rem] gap-7 py-6 sm:py-7 md:min-h-[12.5rem] md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-10">
+      <CardBody className="grid grid-cols-1 min-h-[19rem] gap-7 py-6 sm:py-7 md:min-h-[12.5rem] md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-10">
         {children}
       </CardBody>
     </Card>

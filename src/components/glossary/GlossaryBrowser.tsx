@@ -115,7 +115,7 @@ export function GlossaryBrowser({ lessonTitles = {} }: GlossaryBrowserProps) {
 
   return (
     <Container className="py-10 sm:py-14">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div role="search">
           <label htmlFor={searchId} className="eyebrow mb-1.5 block">
             Search every term, alias and definition

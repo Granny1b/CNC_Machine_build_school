@@ -181,7 +181,7 @@ export function AxisTriadFigure() {
 
       <div className="mt-4 border-t border-rule pt-4">
         <p className="eyebrow">Key to the axes</p>
-        <ul className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+        <ul className="mt-3 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
           {[
             ["+X", "to the right, viewed from the front of the machine"],
             ["+Y", "away from the operator, into the machine"],

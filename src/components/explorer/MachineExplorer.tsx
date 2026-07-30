@@ -163,7 +163,7 @@ export function MachineExplorer({ lessonTitles = {} }: MachineExplorerProps) {
             <span className="num">{machineComponents.length}</span> shown
           </p>
         </div>
-        <ul className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
           {machineComponents.map((component, index) => {
             const isEnabled = enabledIds.includes(component.id);
             const isSelected = selectedId === component.id;

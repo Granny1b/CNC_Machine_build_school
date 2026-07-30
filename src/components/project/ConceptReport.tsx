@@ -66,7 +66,7 @@ function DecisionEntry({ stage, option }: { stage: ProjectStage; option: Project
         {ticks(option.fitForBrief, `${key}-fit`)}
       </p>
 
-      <dl className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+      <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
         {(
           [
             ["Cost", option.cost],
@@ -197,7 +197,7 @@ export function ConceptReport() {
             <p key={index}>{ticks(paragraph, `report-brief-${index}`)}</p>
           ))}
         </div>
-        <dl className="mt-5 grid gap-x-6 gap-y-3 border-t border-rule pt-5 sm:grid-cols-2">
+        <dl className="mt-5 grid grid-cols-1 gap-x-6 gap-y-3 border-t border-rule pt-5 sm:grid-cols-2">
           {projectBrief.constraints.map((constraint) => (
             <div key={constraint.label} className="flex flex-wrap items-baseline gap-x-3">
               <dt className="eyebrow">{constraint.label}</dt>

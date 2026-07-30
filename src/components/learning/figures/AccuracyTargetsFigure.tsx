@@ -212,7 +212,7 @@ export function AccuracyTargetsFigure() {
 
       <div className="mt-4 border-t border-rule pt-4">
         <p className="eyebrow">Key</p>
-        <ul className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+        <ul className="mt-3 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
           <li className="flex items-center gap-3 text-[14px] leading-snug text-ink-soft">
             <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" className="shrink-0">
               <circle cx="11" cy="8" r="5" className="fill-ink-soft" />

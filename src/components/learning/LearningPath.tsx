@@ -53,7 +53,7 @@ export function LearningPath({ lessonTitles, lessonMinutes, totalMinutes }: Lear
     <Container className="py-10 sm:py-14">
       {/* Course position, and the honest size of what is written. */}
       <Card tone="raised">
-        <div className="grid gap-8 px-5 py-6 sm:px-6 md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] md:gap-10">
+        <div className="grid grid-cols-1 gap-8 px-5 py-6 sm:px-6 md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] md:gap-10">
           <div>
             <p className="eyebrow mb-3">Your position on the course</p>
             <AxisScale currentLevel={ready ? currentLevel : 0} totalLevels={TOTAL_LEVELS} />
@@ -145,7 +145,7 @@ function LevelCard({
         <h3 className="mt-3 text-[20px] font-semibold sm:text-[22px]">{level.title}</h3>
         <p className="measure mt-2 text-[16px] leading-[1.65] text-ink-soft">{level.summary}</p>
 
-        <div className="mt-4 grid gap-5 sm:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <p className="eyebrow">Comes after</p>
             {prerequisites.length > 0 ? (
@@ -222,7 +222,7 @@ function LevelCard({
           eyebrow="What this level covers"
           title={`${level.topics.length} ${pluralise(level.topics.length, "topic")} in this level`}
         >
-          <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
             {level.topics.map((topic, index) => (
               <li key={topic} className="flex gap-3 text-[14px] leading-snug text-ink-soft">
                 <span aria-hidden="true" className="num shrink-0 text-[12px] text-ink-faint">

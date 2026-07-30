@@ -78,7 +78,7 @@ export function GlossaryEntry({ entry, termNames, lessonTitles = {} }: GlossaryE
           ) : null}
 
           {related.length > 0 || entry.lessons.length > 0 ? (
-            <div className="mt-5 grid gap-4 border-t border-rule pt-4 sm:grid-cols-2">
+            <div className="mt-5 grid grid-cols-1 gap-4 border-t border-rule pt-4 sm:grid-cols-2">
               {related.length > 0 ? (
                 <div>
                   <p className="eyebrow">Related terms</p>

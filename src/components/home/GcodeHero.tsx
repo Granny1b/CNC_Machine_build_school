@@ -136,7 +136,7 @@ export function GcodeHero() {
           </div>
         </CardHeader>
 
-        <div className="grid md:grid-cols-[minmax(0,17rem)_minmax(0,1fr)]">
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,17rem)_minmax(0,1fr)]">
           <div className="overflow-x-auto border-b border-rule p-4 sm:p-5 md:border-b-0 md:border-r">
             <p className="eyebrow">The program · {gcodeProgram.length} blocks</p>
             <ProgramListing activeIndex={frame.lineIndex} />

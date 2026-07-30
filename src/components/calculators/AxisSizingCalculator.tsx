@@ -124,7 +124,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
         </div>
       )}
 
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-6">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-6">
         <div className="space-y-5">
           <Card>
             <CardHeader>
@@ -144,7 +144,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
                 onChange={update("mass")}
                 hint="everything the drive actually moves: table, saddle, fixture and workpiece together"
               />
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Traverse speed"
                   symbol="v"
@@ -164,7 +164,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
                   hint="how briskly it gets there; on short moves this buys far more time than top speed does"
                 />
               </div>
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Travel"
                   symbol="L"
@@ -185,7 +185,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
                   hint="the cut pushing back along this axis; zero while the axis is only positioning"
                 />
               </div>
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Screw lead"
                   symbol="P"
@@ -206,7 +206,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
                   hint="the fraction of the work put into the screw that arrives as useful thrust; the rest becomes heat"
                 />
               </div>
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Friction coefficient"
                   symbol="μ"
@@ -251,7 +251,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
               </p>
             </CardHeader>
             <CardBody className="space-y-4">
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Readout
                   label="Total thrust"
                   value={formatCalcValue(results.thrust, 4)}
@@ -353,7 +353,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
             The list of what is left out is longer than the list of what is included, and every item
             on it can decide a selection on its own.
           </p>
-          <dl className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+          <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
             {AXIS_EXCLUSIONS.map((item) => (
               <div key={item.title}>
                 <dt className="font-display text-[15px] font-semibold tracking-tightest text-ink">

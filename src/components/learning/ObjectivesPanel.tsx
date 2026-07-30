@@ -17,7 +17,7 @@ export function ObjectivesPanel({ objectives }: { objectives: string[] }) {
       <h2 id="lesson-objectives" className="mt-2 text-[19px] font-semibold sm:text-[21px]">
         By the end of this lesson you will be able to
       </h2>
-      <ol className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+      <ol className="mt-4 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
         {objectives.map((objective, index) => (
           <li key={index} className="flex gap-3 text-[15px] leading-[1.6] text-ink">
             <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-blue">

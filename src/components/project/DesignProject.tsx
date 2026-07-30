@@ -154,7 +154,7 @@ export function DesignProject() {
   }, [state.projectDecisions]);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-10">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-10">
       <aside aria-label="Project stages" className="no-print lg:sticky lg:top-6 lg:self-start">
         <p className="eyebrow">Stage {String(stage.number).padStart(2, "0")} of {TOTAL_STAGES}</p>
         <AxisScale

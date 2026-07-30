@@ -9,13 +9,17 @@ import { primaryNav } from "./nav";
 /** The wordmark: a datum triangle and the course name, set like a title block. */
 function Wordmark() {
   return (
-    <Link href="/" className="group flex items-center gap-2.5" aria-label="CNC Academy, home">
+    <Link
+      href="/"
+      className="group flex shrink-0 items-center gap-2.5"
+      aria-label="CNC Academy, home"
+    >
       <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" className="shrink-0">
         <rect x="0.5" y="0.5" width="21" height="21" fill="none" stroke="#B4BDB8" />
         <path d="M11 5.5L16 14.5H6L11 5.5Z" fill="#17395B" />
         <path d="M4 17.5H18" stroke="#17395B" strokeWidth="1.25" />
       </svg>
-      <span className="font-display text-[17px] font-bold tracking-tightest text-ink">
+      <span className="whitespace-nowrap font-display text-[17px] font-bold tracking-tightest text-ink">
         CNC Academy
       </span>
     </Link>
@@ -57,7 +61,9 @@ export function SiteHeader() {
           <Wordmark />
 
           {/* Eleven destinations do not fit a 1024px bar at this type size, so
-              the drawer carries the nav up to 1280px. */}
+              the drawer carries the nav up to 1280px, and the bar uses each
+              item's concise `short` label — the full labels need about 1100px
+              of a 1216px content box, leaving nothing for the wordmark. */}
           <nav aria-label="Primary" className="hidden xl:block">
             <ul className="flex items-center gap-0.5">
               {desktopNav.map((item) => {
@@ -67,13 +73,13 @@ export function SiteHeader() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`block rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-eyebrow transition-colors motion-reduce:transition-none ${
+                      className={`block whitespace-nowrap rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-eyebrow transition-colors motion-reduce:transition-none ${
                         active
                           ? "bg-blue-wash text-blue"
                           : "text-ink-faint hover:bg-paper-sunk hover:text-ink"
                       }`}
                     >
-                      {item.label}
+                      {item.short ?? item.label}
                     </Link>
                   </li>
                 );

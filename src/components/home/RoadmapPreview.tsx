@@ -40,7 +40,7 @@ export function RoadmapPreview() {
         </ButtonLink>
       </div>
 
-      <ol className="mt-8 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-8 grid grid-cols-1 items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {TIER_ORDER.map((tier, index) => {
           const levels = levelsByTier(tier);
           const ready = levels.filter((level) => level.status === "published").length;

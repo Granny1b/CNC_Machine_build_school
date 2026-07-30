@@ -51,7 +51,7 @@ export function TermList({ terms }: { terms: TermDefinition[] }) {
           The words this lesson uses
         </h2>
       </div>
-      <dl className="grid gap-x-8 gap-y-5 px-5 py-5 sm:grid-cols-2 sm:px-6">
+      <dl className="grid grid-cols-1 gap-x-8 gap-y-5 px-5 py-5 sm:grid-cols-2 sm:px-6">
         {terms.map((term) => {
           const slug = glossarySlugForTerm(term.term);
           return (

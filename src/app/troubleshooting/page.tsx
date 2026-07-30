@@ -55,7 +55,7 @@ export default function TroubleshootingPage() {
           </p>
         </div>
 
-        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {GRADES.map((grade) => (
             <li key={grade.label}>
               <Card tone="sunk" className="h-full">

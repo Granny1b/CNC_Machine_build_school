@@ -59,7 +59,7 @@ export default function ResourcesPage() {
           and its compliance, not for a course.
         </p>
 
-        <ul className="mt-6 grid gap-4 lg:grid-cols-2">
+        <ul className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {STANDARDS.map((standard) => (
             <li key={standard.code}>
               <Card tone="raised" className="h-full">
@@ -93,7 +93,7 @@ export default function ResourcesPage() {
           {SOURCES.map((source) => (
             <li key={source.title}>
               <Card tone="sunk">
-                <CardBody className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+                <CardBody className="grid grid-cols-1 gap-x-8 gap-y-3 md:grid-cols-2">
                   <h3 className="font-display text-[17px] font-semibold tracking-tightest text-ink md:col-span-2">
                     {source.title}
                   </h3>

@@ -98,7 +98,7 @@ export function MachiningCalculator({ compact = false }: { compact?: boolean }) 
         </div>
       )}
 
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-6">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-6">
         <div className="space-y-5">
           <Card>
             <CardHeader>
@@ -109,7 +109,7 @@ export function MachiningCalculator({ compact = false }: { compact?: boolean }) 
               </p>
             </CardHeader>
             <CardBody className="space-y-4">
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Tool diameter"
                   symbol="D"
@@ -147,7 +147,7 @@ export function MachiningCalculator({ compact = false }: { compact?: boolean }) 
                 onChange={update("feedPerTooth")}
                 hint="the thickness of the slice each edge takes. Also from the supplier's data — a property of the tool, not a preference."
               />
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Axial depth of cut"
                   symbol="ap"
@@ -167,7 +167,7 @@ export function MachiningCalculator({ compact = false }: { compact?: boolean }) 
                   hint="how wide a bite it takes sideways; it can never exceed the diameter"
                 />
               </div>
-              <div className="grid gap-4 xs:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2">
                 <CalcField
                   label="Pass length"
                   symbol="L"
@@ -212,7 +212,7 @@ export function MachiningCalculator({ compact = false }: { compact?: boolean }) 
               </p>
             </CardHeader>
             <CardBody className="space-y-4">
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <Readout
                   label="Spindle speed"
                   value={formatCalcValue(results.spindleSpeed, 4)}

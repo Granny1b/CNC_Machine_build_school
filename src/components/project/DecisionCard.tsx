@@ -154,7 +154,7 @@ function OptionPanel({
         </div>
 
         <div className="space-y-5 px-5 py-5 sm:px-6">
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <PointList
               label="Benefits"
               items={option.benefits}
@@ -169,7 +169,7 @@ function OptionPanel({
             />
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Implication label="Cost" body={option.cost} keyPrefix={`${keyPrefix}-cost`} />
             <Implication
               label="Performance"

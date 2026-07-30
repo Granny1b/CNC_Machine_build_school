@@ -42,7 +42,7 @@ export default function ProjectPage() {
       />
 
       <Container as="section" className="py-10 sm:py-14">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-10">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-10">
           <div>
             <h2 className="text-[22px] font-semibold sm:text-[26px]">
               How the project works

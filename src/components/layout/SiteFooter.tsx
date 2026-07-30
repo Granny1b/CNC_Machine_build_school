@@ -6,7 +6,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-rule bg-paper-raised">
       <Container width="wide" className="py-12">
-        <div className="grid gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
           <div>
             <p className="eyebrow">CNC Academy</p>
             <p className="measure mt-3 text-[15px] leading-[1.6] text-ink-soft">

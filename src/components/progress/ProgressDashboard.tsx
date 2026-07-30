@@ -134,7 +134,7 @@ export function ProgressDashboard() {
     <div className="space-y-10">
       {/* ---------------------------------------------- position on the course */}
       <Card tone="raised">
-        <CardBody className="grid min-h-[16rem] gap-8 py-6 sm:py-7 md:min-h-[11rem] md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-10">
+        <CardBody className="grid grid-cols-1 min-h-[16rem] gap-8 py-6 sm:py-7 md:min-h-[11rem] md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-10">
           <div>
             <p className="eyebrow mb-3">Your position on the course</p>
             {ready ? (
@@ -250,7 +250,7 @@ export function ProgressDashboard() {
         title="Where the twenty levels stand"
         intro={`${PUBLISHED_LEVELS.length} of the ${TOTAL_LEVELS} levels carry written lessons. The other ${PLANNED_LEVELS.length} are on the roadmap: their topics are listed in full on the learning path, so the whole route is legible, but the lessons themselves are not written yet. Nothing here is hidden from you and nothing is pretending to exist.`}
       >
-        <ol className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+        <ol className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
           {curriculum.map((level) => {
             const written = level.status === "published";
             const done =

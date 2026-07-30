@@ -279,7 +279,7 @@ export function BallScrewFigure() {
 
       <div className="mt-4 border-t border-rule pt-4">
         <p className="eyebrow">Parts list · section through the feed drive</p>
-        <ol className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+        <ol className="mt-3 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
           {PARTS.map((part, index) => (
             <li key={part} className="flex gap-3 text-[14px] leading-snug text-ink-soft">
               <span className="num shrink-0 text-[12px] text-ink">

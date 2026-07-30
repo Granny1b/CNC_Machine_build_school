@@ -55,7 +55,7 @@ export function ProjectPreview() {
   const constraints = picked.length >= 2 ? picked : projectBrief.constraints.slice(0, 3);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,23rem)] lg:gap-12">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,23rem)] lg:gap-12">
       <div>
         <p className="eyebrow">Level 20 · the design project</p>
         <h2 className="mt-2 text-[26px] font-semibold sm:text-[30px]">{projectBrief.title}</h2>
