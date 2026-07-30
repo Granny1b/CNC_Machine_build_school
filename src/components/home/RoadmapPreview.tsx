@@ -66,7 +66,9 @@ export function RoadmapPreview() {
                       <span className="num shrink-0 text-[11px] text-ink-faint">
                         L{pad(level.number)}
                       </span>
-                      <span className="min-w-0 flex-1 text-[14px] font-medium leading-snug">
+                      {/* A floor on the title's width makes the badge wrap to
+                          its own line rather than squeezing the title. */}
+                      <span className="min-w-[8rem] flex-1 text-[14px] font-medium leading-snug">
                         {level.title}
                       </span>
                       <StatusBadge status={level.status} />
@@ -81,12 +83,12 @@ export function RoadmapPreview() {
 
       <p className="measure mt-6 text-[14px] leading-[1.65] text-ink-soft">
         <span className="num">{lessons.length}</span>{" "}
-        {pluralise(lessons.length, "lesson")} — about{" "}
-        <span className="num">{estimatedMinutes()}</span> minutes of reading — are written, across{" "}
+        {pluralise(lessons.length, "lesson")} are written, across{" "}
         <span className="num">{publishedLevels}</span> of the{" "}
-        <span className="num">{curriculum.length}</span> levels. Every other level already carries
-        its full topic list on the learning path, so the whole route is legible from the first day
-        rather than hidden behind a promise.
+        <span className="num">{curriculum.length}</span> levels, adding up to about{" "}
+        <span className="num">{estimatedMinutes()}</span> minutes of reading. Every other level
+        already carries its full topic list on the learning path, so the whole route is legible
+        from the first day rather than hidden behind a promise.
       </p>
     </div>
   );

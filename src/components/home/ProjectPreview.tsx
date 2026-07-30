@@ -2,23 +2,46 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
 import { projectBrief, projectStages } from "@/content/project";
 import type { ProjectStage } from "@/content/types";
+import { plainSegments } from "@/lib/autolink";
 import { pluralise } from "@/lib/format";
 
 /**
  * The project preview of SPEC.md section 8, pointing at the twenty-stage design
  * project of section 12.
  *
- * SPEC content rule 7 is not optional and not small print: the project is a
+ * SPEC content rule 7 is neither optional nor small print: the project is a
  * concept exercise, and this panel says so in full sentences before it invites
- * anybody in. The statement sits in blue, not amber — amber is reserved for
- * safety content alone, and this is a statement of scope.
+ * anybody in. The statement sits in blue rather than amber — amber is reserved
+ * for safety content alone, and this is a statement of scope.
  */
+
+type Constraint = (typeof projectBrief.constraints)[number];
 
 /** Intended use, architecture, axis drives, and the report that ends it. */
 const HIGHLIGHT_NUMBERS = [1, 4, 9, 20];
 
+/** The constraints that shape the most decisions, in the brief's own words. */
+const HIGHLIGHT_CONSTRAINTS = ["Largest workpiece", "Materials", "Stated priorities"];
+
 function pad(n: number): string {
   return String(n).padStart(2, "0");
+}
+
+/** Values in `project.ts` mark their numbers with backticks; those go in mono. */
+function Segments({ text }: { text: string }) {
+  return (
+    <>
+      {plainSegments(text).map((segment, i) =>
+        segment.code ? (
+          <span key={i} className="num">
+            {segment.text}
+          </span>
+        ) : (
+          <span key={i}>{segment.text}</span>
+        ),
+      )}
+    </>
+  );
 }
 
 export function ProjectPreview() {
@@ -26,7 +49,10 @@ export function ProjectPreview() {
     projectStages.find((stage) => stage.number === number),
   ).filter((stage): stage is ProjectStage => Boolean(stage));
 
-  const constraints = projectBrief.constraints.slice(0, 3);
+  const picked = HIGHLIGHT_CONSTRAINTS.map((label) =>
+    projectBrief.constraints.find((constraint) => constraint.label === label),
+  ).filter((constraint): constraint is Constraint => Boolean(constraint));
+  const constraints = picked.length >= 2 ? picked : projectBrief.constraints.slice(0, 3);
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,23rem)] lg:gap-12">
@@ -35,7 +61,9 @@ export function ProjectPreview() {
         <h2 className="mt-2 text-[26px] font-semibold sm:text-[30px]">{projectBrief.title}</h2>
         <div className="measure mt-3 space-y-3 text-[16px] leading-[1.65] text-ink-soft">
           {projectBrief.paragraphs.slice(0, 2).map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+            <p key={index}>
+              <Segments text={paragraph} />
+            </p>
           ))}
         </div>
 
@@ -75,12 +103,11 @@ export function ProjectPreview() {
           <p className="eyebrow">The brief · fixed constraints</p>
           <dl className="mt-3 divide-y divide-rule border-y border-rule">
             {constraints.map((constraint) => (
-              <div
-                key={constraint.label}
-                className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5"
-              >
-                <dt className="text-[14px] leading-snug text-ink-soft">{constraint.label}</dt>
-                <dd className="num text-[13px] font-medium text-ink">{constraint.value}</dd>
+              <div key={constraint.label} className="py-2.5">
+                <dt className="eyebrow">{constraint.label}</dt>
+                <dd className="mt-1 text-[14px] leading-snug text-ink">
+                  <Segments text={constraint.value} />
+                </dd>
               </div>
             ))}
           </dl>

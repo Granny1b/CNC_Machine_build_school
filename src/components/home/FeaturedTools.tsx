@@ -70,7 +70,7 @@ const tools: Tool[] = [
     href: "/glossary",
   },
   {
-    tag: "In development",
+    tag: "Roadmap",
     title: "G-code simulator",
     description:
       "Not built yet, and its page says so rather than showing invented output. When it arrives it will parse a program, draw the toolpath, follow the coordinates block by block, explain each command and flag the mistakes that crash machines.",

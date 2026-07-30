@@ -362,6 +362,7 @@ function ToolpathDrawing({ frame }: { frame: FrameState }) {
         d={`M${sx(PROGRAM_START.x) - 2.4},${sy(PROGRAM_START.y)}H${sx(PROGRAM_START.x) + 2.4}M${sx(
           PROGRAM_START.x,
         )},${sy(PROGRAM_START.y) - 2.4}V${sy(PROGRAM_START.y) + 2.4}`}
+        fill="none"
         stroke={RULE_STRONG}
         strokeWidth={0.3}
       />
@@ -400,6 +401,7 @@ function ToolpathDrawing({ frame }: { frame: FrameState }) {
         />
         <path
           d={`M${toolX - 1.6},${toolY}H${toolX + 1.6}M${toolX},${toolY - 1.6}V${toolY + 1.6}`}
+          fill="none"
           stroke={toolStroke}
           strokeWidth={0.4}
         />
