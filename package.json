@@ -9,8 +9,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "check:content": "tsx scripts/check-content.ts",
-    "verify": "npm run typecheck && npm run check:content && npm run build",
-    "sweep": "node scripts/sweep.mjs"
+    "verify": "npm run typecheck && npm run check:content && npm run check:gcode && npm run build",
+    "sweep": "node scripts/sweep.mjs",
+    "check:gcode": "tsx scripts/check-gcode.ts"
   },
   "dependencies": {
     "next": "14.2.33",
