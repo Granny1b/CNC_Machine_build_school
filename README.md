@@ -50,6 +50,21 @@ BASE=http://localhost:3000 npm run sweep
 
 Both checks exit non-zero on failure, so either can gate a release.
 
+### Static export
+
+Every route is prerendered, so the site can also be built as plain files:
+
+```bash
+STATIC_EXPORT=true PAGES_BASE_PATH=/CNC_Machine_build_school npm run build
+```
+
+That writes `out/`, which is what `.github/workflows/pages.yml` publishes to
+GitHub Pages on every push. `PAGES_BASE_PATH` compiles in the `/<repo>/` prefix a
+Pages project site is served from; leave it unset to export for a domain root.
+The export is only possible because there are no route handlers, no server
+actions and no request-time data — if that ever changes, this build is where it
+will show up first.
+
 ---
 
 ## Routes
