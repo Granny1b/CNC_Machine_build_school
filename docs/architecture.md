@@ -68,7 +68,8 @@ nobody "fixes" it.
 ├── README.md
 ├── docs/                      # this file, authoring-content.md, roadmap.md
 ├── scripts/
-│   └── check-content.ts       # content integrity check; `npm run check:content`
+│   ├── check-content.ts       # content integrity check; `npm run check:content`
+│   └── sweep.mjs              # browser sweep; `npm run sweep`
 └── src/
     ├── app/
     │   ├── layout.tsx         # font links, ProgressProvider, header, footer, skip link
@@ -174,6 +175,20 @@ proves the content has the right *shape*; `npm run check:content` proves it has
 the right *content* — cross-references resolve, minimum depth is met, no
 placeholder text survives anywhere in `src`. `npm run verify` runs typecheck,
 the content check and the build in that order.
+
+**The browser sweep is the other half.** `scripts/sweep.mjs` (`npm run sweep`)
+covers the SPEC section 15 items that do not exist until the CSS has been
+applied, because they are properties of the rendered page rather than of the
+source: horizontal overflow at 360 / 768 / 1280, contrast measured against each
+element's *computed* background, heading order, accessible names, a visible
+focus ring on every keyboard stop, and a hero that holds still under
+`prefers-reduced-motion`. It needs a running server and reads `BASE`.
+
+This split matters because the two failure modes look nothing alike. A missing
+quiz explanation is a fact about the data and the content check finds it. A
+paragraph at 2.5:1, or a table that pushes the page sideways at 360px, is a
+fact about the cascade — invisible in the source, and caught only by measuring
+the real thing. Both defects found during Phase 10 were of the second kind.
 
 ---
 

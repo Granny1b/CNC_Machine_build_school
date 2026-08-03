@@ -26,6 +26,7 @@ npm run build          # must pass before any phase is considered done
 npm run typecheck      # tsc --noEmit, must be clean
 npm run check:content  # content integrity: cross-references, depth, no placeholders
 npm run verify         # typecheck + check:content + build
+npm run sweep          # drives a real browser; needs the site already running
 ```
 
 `npm run check:content` is the machine-readable half of the definition of done.
@@ -33,6 +34,20 @@ It proves what the type system cannot: that every lesson has all eleven
 pedagogical sections, that every quiz option carries specific feedback rather
 than a generic "incorrect", that every cross-reference resolves, and that no
 placeholder text exists anywhere in `src`.
+
+`npm run sweep` is the other half — the SPEC section 15 items that only exist
+once the CSS has been applied. It drives Chromium over every route and checks
+layout at 360 / 768 / 1280, colour contrast against the computed background,
+heading order, accessible names, a visible focus ring on every keyboard stop,
+and that the hero holds still under `prefers-reduced-motion`. It needs a
+running server and takes its address from `BASE`:
+
+```bash
+npm run build && npm start &
+BASE=http://localhost:3000 npm run sweep
+```
+
+Both checks exit non-zero on failure, so either can gate a release.
 
 ---
 
