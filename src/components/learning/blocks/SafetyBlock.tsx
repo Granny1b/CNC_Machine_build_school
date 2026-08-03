@@ -32,7 +32,7 @@ export function SafetyBlock({ body }: { body: string }) {
           height="16"
           viewBox="0 0 18 16"
           fill="none"
-          className="shrink-0 text-amber"
+          className="shrink-0 text-amber-ink"
         >
           <path
             d="M9 1.4 17 14.6H1L9 1.4Z"

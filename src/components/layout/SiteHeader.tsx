@@ -76,7 +76,7 @@ export function SiteHeader() {
                       className={`block whitespace-nowrap rounded-sm px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-eyebrow transition-colors motion-reduce:transition-none ${
                         active
                           ? "bg-blue-wash text-blue"
-                          : "text-ink-faint hover:bg-paper-sunk hover:text-ink"
+                          : "text-ink-soft hover:bg-paper-sunk hover:text-ink"
                       }`}
                     >
                       {item.short ?? item.label}
@@ -130,7 +130,7 @@ export function SiteHeader() {
                       >
                         {item.label}
                       </span>
-                      <span className="text-right font-mono text-[11px] text-ink-faint">
+                      <span className="text-right font-mono text-[11px] text-ink-soft">
                         {item.blurb}
                       </span>
                     </Link>

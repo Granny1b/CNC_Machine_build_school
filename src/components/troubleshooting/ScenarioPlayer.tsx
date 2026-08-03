@@ -164,7 +164,7 @@ export function ScenarioPlayer({ scenario, number }: ScenarioPlayerProps) {
           <ul className="measure mt-3 space-y-2.5">
             {scenario.context.map((line, index) => (
               <li key={index} className="flex gap-3 text-[16px] leading-[1.6] text-ink-soft">
-                <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[11px] text-ink-faint">
+                <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[11px] text-ink-soft">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{ticks(line, `${scenario.id}-ctx-${index}`)}</span>
@@ -240,14 +240,14 @@ export function ScenarioPlayer({ scenario, number }: ScenarioPlayerProps) {
                         >
                           <span
                             aria-hidden="true"
-                            className="num mt-0.5 shrink-0 text-[12px] text-ink-faint"
+                            className="num mt-0.5 shrink-0 text-[12px] text-ink-soft"
                           >
                             {LETTERS[index] || String(index + 1)}
                           </span>
                           <span className="min-w-0 text-[16px] leading-[1.55] text-ink">
                             {ticks(option.text, `${scenario.id}-${step.id}-${option.id}`)}
                             {isChosen ? (
-                              <span className="mt-2 block font-mono text-[11px] uppercase tracking-eyebrow text-ink-faint">
+                              <span className="mt-2 block font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
                                 Your call
                               </span>
                             ) : null}

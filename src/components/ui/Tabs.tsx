@@ -69,7 +69,7 @@ export function Tabs({ items, className = "", ariaLabel }: TabsProps) {
               className={`-mb-px border-b-2 px-3 py-2 font-mono text-[12px] uppercase tracking-eyebrow transition-colors motion-reduce:transition-none ${
                 selected
                   ? "border-blue text-blue"
-                  : "border-transparent text-ink-faint hover:text-ink-soft"
+                  : "border-transparent text-ink-soft hover:text-ink"
               }`}
             >
               {item.label}

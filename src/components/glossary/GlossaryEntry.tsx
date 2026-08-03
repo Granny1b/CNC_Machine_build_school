@@ -45,7 +45,7 @@ export function GlossaryEntry({ entry, termNames, lessonTitles = {} }: GlossaryE
 
           <a
             href={`#${entry.slug}`}
-            className="mt-1 inline-block font-mono text-[11px] text-ink-faint transition-colors hover:text-blue motion-reduce:transition-none"
+            className="mt-1 inline-block font-mono text-[11px] text-ink-soft transition-colors hover:text-blue motion-reduce:transition-none"
           >
             <span aria-hidden="true">#</span>
             {entry.slug}
@@ -71,7 +71,7 @@ export function GlossaryEntry({ entry, termNames, lessonTitles = {} }: GlossaryE
           ) : null}
 
           {entry.aliases && entry.aliases.length > 0 ? (
-            <p className="mt-4 text-[13px] leading-snug text-ink-faint">
+            <p className="mt-4 text-[13px] leading-snug text-ink-soft">
               <span className="eyebrow">Also written </span>
               {entry.aliases.join(", ")}
             </p>

@@ -52,7 +52,7 @@ function StageRail({
             >
               <span
                 className={`num mt-px shrink-0 text-[11px] ${
-                  active ? "text-paper-raised" : "text-ink-faint"
+                  active ? "text-paper-raised" : "text-ink-soft"
                 }`}
               >
                 {String(stage.number).padStart(2, "0")}
@@ -61,7 +61,7 @@ function StageRail({
               <span
                 aria-hidden="true"
                 className={`mt-px shrink-0 font-mono text-[12px] leading-[1.4] ${
-                  active ? "text-paper-raised" : decided ? "text-moss" : "text-ink-faint"
+                  active ? "text-paper-raised" : decided ? "text-moss" : "text-ink-soft"
                 }`}
               >
                 {decided ? "✓" : decidable ? "○" : "·"}
@@ -101,7 +101,7 @@ function StageBody({ stage }: { stage: ProjectStage }) {
           <ol className="measure mt-4 space-y-3">
             {questions.map((question, index) => (
               <li key={index} className="flex gap-3 text-[16px] leading-[1.6] text-ink-soft">
-                <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-faint">
+                <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-soft">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{ticks(question, `${stage.id}-sc-${index}`)}</span>
@@ -176,7 +176,7 @@ export function DesignProject() {
         <div className="mt-4">
           <StageRail activeId={activeId} decidedIds={decidedIds} onSelect={setActiveId} />
         </div>
-        <p className="mt-3 text-[13px] leading-[1.5] text-ink-faint">
+        <p className="mt-3 text-[13px] leading-[1.5] text-ink-soft">
           Choices are saved in this browser as soon as you make them, and restored when you come
           back. Nothing is sent anywhere.
         </p>
@@ -231,12 +231,12 @@ export function DesignProject() {
                 <span className="sr-only">, {previous.title}</span>
               </Button>
             ) : (
-              <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-faint">
+              <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
                 First stage
               </p>
             )}
             {previous ? (
-              <p className="mt-2 text-[13px] text-ink-faint">{previous.title}</p>
+              <p className="mt-2 text-[13px] text-ink-soft">{previous.title}</p>
             ) : null}
           </div>
 
@@ -248,11 +248,11 @@ export function DesignProject() {
                 <span aria-hidden="true">→</span>
               </Button>
             ) : (
-              <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-faint">
+              <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
                 Last stage
               </p>
             )}
-            {next ? <p className="mt-2 text-[13px] text-ink-faint">{next.title}</p> : null}
+            {next ? <p className="mt-2 text-[13px] text-ink-soft">{next.title}</p> : null}
           </div>
         </nav>
       </div>

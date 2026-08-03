@@ -60,7 +60,7 @@ function Implication({
     >
       <p
         className={`font-mono text-[11px] uppercase tracking-eyebrow ${
-          isSafety ? "text-amber" : "text-ink-faint"
+          isSafety ? "text-amber-ink" : "text-ink-soft"
         }`}
       >
         {label}
@@ -87,7 +87,7 @@ function PointList({
       <ul className="mt-2.5 space-y-2">
         {items.map((item, index) => (
           <li key={index} className="flex gap-2.5 text-[15px] leading-[1.6] text-ink-soft">
-            <span aria-hidden="true" className="mt-0.5 shrink-0 font-mono text-[12px] text-ink-faint">
+            <span aria-hidden="true" className="mt-0.5 shrink-0 font-mono text-[12px] text-ink-soft">
               {marker}
             </span>
             <span>{ticks(item, `${keyPrefix}-${index}`)}</span>

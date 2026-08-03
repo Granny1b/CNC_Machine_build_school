@@ -7,7 +7,7 @@ const tones: Record<BadgeTone, string> = {
   blue: "bg-blue-wash text-blue border-blue/20",
   moss: "bg-moss-wash text-moss border-moss/25",
   // Amber is reserved for safety content only. See SPEC section 5.
-  amber: "bg-amber-wash text-amber border-amber/30",
+  amber: "bg-amber-wash text-amber-ink border-amber/30",
   outline: "bg-transparent text-ink-soft border-rule-strong",
 };
 

@@ -68,7 +68,7 @@ export function LessonNav({ headings, previous, next }: LessonNavProps) {
           <ol className="mt-2.5 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
             {headings.map((heading, index) => (
               <li key={heading.id} className="flex gap-3 text-[14px] leading-snug">
-                <span aria-hidden="true" className="num shrink-0 text-[12px] text-ink-faint">
+                <span aria-hidden="true" className="num shrink-0 text-[12px] text-ink-soft">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <a href={`#${heading.id}`} className={LINK}>

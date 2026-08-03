@@ -149,7 +149,7 @@ export function KnowledgeCheck({ lessonSlug, questions }: KnowledgeCheckProps) {
                         />
                         <span className="min-w-0">
                           <span className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                            <span aria-hidden="true" className="num text-[12px] text-ink-faint">
+                            <span aria-hidden="true" className="num text-[12px] text-ink-soft">
                               {LETTERS[optionIndex] ?? String(optionIndex + 1)}
                             </span>
                             <span className="text-[16px] leading-[1.55] text-ink">

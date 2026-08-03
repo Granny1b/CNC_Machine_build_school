@@ -225,7 +225,7 @@ function LevelCard({
           <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
             {level.topics.map((topic, index) => (
               <li key={topic} className="flex gap-3 text-[14px] leading-snug text-ink-soft">
-                <span aria-hidden="true" className="num shrink-0 text-[12px] text-ink-faint">
+                <span aria-hidden="true" className="num shrink-0 text-[12px] text-ink-soft">
                   {pad(index + 1)}
                 </span>
                 <span>{topic}</span>

@@ -35,7 +35,7 @@ export function ExercisePanel({ exercise }: { exercise: Exercise }) {
             <li key={index} className="flex gap-3.5">
               <span
                 aria-hidden="true"
-                className="num mt-0.5 shrink-0 text-[12px] text-ink-faint"
+                className="num mt-0.5 shrink-0 text-[12px] text-ink-soft"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>

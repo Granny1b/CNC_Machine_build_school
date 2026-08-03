@@ -40,7 +40,7 @@ export function FormulaCard({ formula, eyebrow = "The formula", className = "" }
               <dt className="font-mono text-[13px] font-medium text-blue">{variable.symbol}</dt>
               <dd className="text-[14px] leading-snug text-ink-soft">
                 {variable.meaning}
-                <span className="ml-2 whitespace-nowrap font-mono text-[12px] text-ink-faint">
+                <span className="ml-2 whitespace-nowrap font-mono text-[12px] text-ink-soft">
                   {variable.unit}
                 </span>
               </dd>

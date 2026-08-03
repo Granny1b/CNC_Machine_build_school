@@ -324,7 +324,7 @@ export function AxisSizingCalculator({ compact = false }: { compact?: boolean })
 
           {orientation === "vertical" ? (
             <div className="rounded-sm border border-amber/30 bg-amber-wash px-4 py-3">
-              <p className="eyebrow text-amber">Safety — vertical axis</p>
+              <p className="eyebrow text-amber-ink">Safety — vertical axis</p>
               <p className="mt-1.5 text-[14px] leading-[1.55] text-ink-soft">
                 {VERTICAL_AXIS_SAFETY}
               </p>

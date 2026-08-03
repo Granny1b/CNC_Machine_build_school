@@ -97,7 +97,7 @@ export default function SimulatorPage() {
 
         {/* Amber, because this is a machine-safety constraint and nothing else. */}
         <div className="mt-10 rounded-sm border border-amber/30 bg-amber-wash px-5 py-5">
-          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber">
+          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber-ink">
             A constraint on the design, not a limitation of the first version
           </p>
           <div className="measure mt-2 space-y-3 text-[16px] leading-[1.65] text-ink">

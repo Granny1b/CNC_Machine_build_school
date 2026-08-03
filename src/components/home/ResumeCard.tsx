@@ -137,7 +137,7 @@ export function ResumeCard() {
             <dd className="num mt-1 text-[15px] font-medium text-ink">{percent}%</dd>
           </div>
         </dl>
-        <p className="mt-3 text-[13px] leading-snug text-ink-faint">
+        <p className="mt-3 text-[13px] leading-snug text-ink-soft">
           <span className="num">{publishedLessonCount}</span>{" "}
           {pluralise(publishedLessonCount, "lesson")} are written so far; the remaining levels are
           on the roadmap with their topics listed.

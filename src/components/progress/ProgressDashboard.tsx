@@ -103,7 +103,7 @@ function Stat({
       ) : (
         <dd className="num mt-1 text-[19px] font-medium text-ink">{value}</dd>
       )}
-      {note ? <p className="mt-1 text-[13px] leading-snug text-ink-faint">{note}</p> : null}
+      {note ? <p className="mt-1 text-[13px] leading-snug text-ink-soft">{note}</p> : null}
     </div>
   );
 }
@@ -187,7 +187,7 @@ export function ProgressDashboard() {
           >
             {lastVisited.title}
           </Link>{" "}
-          <span className="text-ink-faint">
+          <span className="text-ink-soft">
             (Level <span className="num">{pad(lastVisited.level)}</span>)
           </span>
         </p>
@@ -218,7 +218,7 @@ export function ProgressDashboard() {
                     >
                       {lesson.title}
                     </Link>
-                    <p className="mt-0.5 text-[13px] text-ink-faint">
+                    <p className="mt-0.5 text-[13px] text-ink-soft">
                       <span className="num">{lesson.minutes}</span> min ·{" "}
                       {ready ? (complete ? "Complete" : "Not marked complete") : "Reading your record…"}
                     </p>
@@ -260,12 +260,12 @@ export function ProgressDashboard() {
                 key={level.number}
                 className="flex items-baseline gap-3 border-b border-rule py-1.5 text-[15px] leading-[1.5]"
               >
-                <span className="num w-6 shrink-0 text-[12px] text-ink-faint">
+                <span className="num w-6 shrink-0 text-[12px] text-ink-soft">
                   {pad(level.number)}
                 </span>
                 <span className={`min-w-0 flex-1 ${written ? "text-ink" : "text-ink-soft"}`}>
                   {level.title}
-                  <span className="ml-2 whitespace-nowrap text-[12px] text-ink-faint">
+                  <span className="ml-2 whitespace-nowrap text-[12px] text-ink-soft">
                     {TIER_LABELS[level.tier]}
                   </span>
                 </span>
@@ -386,7 +386,7 @@ export function ProgressDashboard() {
                 );
                 return (
                   <li key={stage.id} className="flex items-baseline gap-3 py-3">
-                    <span className="num w-6 shrink-0 text-[12px] text-ink-faint">
+                    <span className="num w-6 shrink-0 text-[12px] text-ink-soft">
                       {pad(stage.number)}
                     </span>
                     <div className="min-w-0">
@@ -396,7 +396,7 @@ export function ProgressDashboard() {
                       <p className="mt-0.5 text-[15px] leading-[1.5] text-ink-soft">
                         {chosen ? chosen.name : "Saved choice no longer offered at this stage"}
                         {chosen?.recommended ? (
-                          <span className="ml-2 text-[13px] text-ink-faint">
+                          <span className="ml-2 text-[13px] text-ink-soft">
                             (the option recommended for this brief)
                           </span>
                         ) : null}

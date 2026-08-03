@@ -16,7 +16,7 @@ export function SiteFooter() {
             </p>
 
             <div className="mt-6 rounded-sm border border-amber/30 bg-amber-wash px-4 py-3">
-              <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber">
+              <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber-ink">
                 Educational use only
               </p>
               <p className="mt-1.5 text-[14px] leading-snug text-ink-soft">
@@ -47,10 +47,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-rule pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-faint">
+          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
             Built to SPEC.md · Phase 1
           </p>
-          <p className="font-mono text-[11px] text-ink-faint">
+          <p className="font-mono text-[11px] text-ink-soft">
             SI units throughout · Shop units shown where conventional
           </p>
         </div>

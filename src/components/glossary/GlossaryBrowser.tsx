@@ -126,7 +126,7 @@ export function GlossaryBrowser({ lessonTitles = {} }: GlossaryBrowserProps) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="ball screw, backlash, ISO, chatter…"
-            className="w-full rounded-sm border border-rule-strong bg-paper-raised px-3 py-2.5 text-[16px] text-ink placeholder:text-ink-faint focus:border-blue-bright"
+            className="w-full rounded-sm border border-rule-strong bg-paper-raised px-3 py-2.5 text-[16px] text-ink placeholder:text-ink-soft focus:border-blue-bright"
           />
         </div>
         <p
@@ -228,7 +228,7 @@ export function GlossaryBrowser({ lessonTitles = {} }: GlossaryBrowserProps) {
             <section key={letter} aria-labelledby={`glossary-letter-${letter}`}>
               <h2
                 id={`glossary-letter-${letter}`}
-                className="scroll-mt-24 border-b border-rule-strong pb-2 font-mono text-[13px] uppercase tracking-eyebrow text-ink-faint"
+                className="scroll-mt-24 border-b border-rule-strong pb-2 font-mono text-[13px] uppercase tracking-eyebrow text-ink-soft"
               >
                 {letter}
                 <span className="sr-only">

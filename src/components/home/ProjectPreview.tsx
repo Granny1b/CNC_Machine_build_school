@@ -119,14 +119,14 @@ export function ProjectPreview() {
           <ol className="mt-3 space-y-2.5">
             {highlights.map((stage) => (
               <li key={stage.id} className="flex gap-3">
-                <span className="num shrink-0 text-[11px] leading-[1.5] text-ink-faint">
+                <span className="num shrink-0 text-[11px] leading-[1.5] text-ink-soft">
                   {pad(stage.number)}
                 </span>
                 <span className="text-[14px] font-medium leading-snug">{stage.title}</span>
               </li>
             ))}
           </ol>
-          <p className="mt-5 text-[13px] leading-snug text-ink-faint">
+          <p className="mt-5 text-[13px] leading-snug text-ink-soft">
             The stages follow the syllabus order, from intended use through to the final concept
             report, so the project doubles as a checklist for the whole course.
           </p>

@@ -170,7 +170,7 @@ export function ComponentPanel({
             <dl className="mt-4 divide-y divide-rule border-y border-rule">
               {component.parameters.map((parameter) => (
                 <div key={parameter.label} className="py-3">
-                  <dt className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-faint">
+                  <dt className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
                     {parameter.label}
                   </dt>
                   <dd className="mt-1.5 text-[15px] leading-[1.6] text-ink">
@@ -215,7 +215,7 @@ export function ComponentPanel({
                     href={`/learn/${slug}`}
                     className="group flex items-baseline gap-2 text-[15px] text-blue underline decoration-blue/30 underline-offset-4 hover:decoration-blue"
                   >
-                    <span aria-hidden="true" className="font-mono text-[11px] text-ink-faint">
+                    <span aria-hidden="true" className="font-mono text-[11px] text-ink-soft">
                       →
                     </span>
                     {lessonLabel(slug, lessonTitles)}
@@ -241,7 +241,7 @@ export function ComponentPanel({
           </Section>
 
           <div className="px-5 py-5 sm:px-6">
-            <p className="measure text-[13px] leading-[1.6] text-ink-faint">
+            <p className="measure text-[13px] leading-[1.6] text-ink-soft">
               Press <kbd className="font-mono text-[12px] text-ink-soft">Esc</kbd> to close this
               panel, or use the arrow keys on the drawing to move between callouts.
             </p>

@@ -129,7 +129,7 @@ export default function ResourcesPage() {
         </div>
 
         <div className="mt-10 rounded-sm border border-amber/30 bg-amber-wash px-5 py-5">
-          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber">
+          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber-ink">
             The limits of this site
           </p>
           <p className="measure mt-2 text-[16px] leading-[1.65] text-ink">

@@ -83,7 +83,7 @@ function ProfileTooltip({ active, payload }: TooltipProps<number, string>) {
       <p className="font-mono text-[12px] tabular-nums text-blue-deep">
         v = {formatFixed(point.v, 3)} m/s
       </p>
-      <p className="mt-0.5 font-mono text-[11px] tabular-nums text-ink-faint">
+      <p className="mt-0.5 font-mono text-[11px] tabular-nums text-ink-soft">
         {formatCalcValue(point.v * 60)} m/min
       </p>
     </div>

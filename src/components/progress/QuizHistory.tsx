@@ -76,11 +76,11 @@ export function QuizHistory({ scores }: QuizHistoryProps) {
                   <span className="num text-[14px] text-ink-soft">{slug}</span>
                 )}
                 {lesson ? (
-                  <span className="ml-2 whitespace-nowrap text-[13px] text-ink-faint">
+                  <span className="ml-2 whitespace-nowrap text-[13px] text-ink-soft">
                     Level <span className="num">{String(lesson.level).padStart(2, "0")}</span>
                   </span>
                 ) : (
-                  <span className="ml-2 text-[13px] text-ink-faint">lesson no longer published</span>
+                  <span className="ml-2 text-[13px] text-ink-soft">lesson no longer published</span>
                 )}
               </span>
               <span className="flex items-baseline gap-4">

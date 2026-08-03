@@ -159,7 +159,7 @@ export function CadToPartFigure() {
               </span>
               <span>
                 <span className="font-mono text-[13px] text-ink">{stage.name}</span>
-                <span className="mx-1.5 text-ink-faint" aria-hidden="true">
+                <span className="mx-1.5 text-ink-soft" aria-hidden="true">
                   &mdash;
                 </span>
                 {stage.output}

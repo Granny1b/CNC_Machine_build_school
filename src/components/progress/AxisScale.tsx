@@ -101,7 +101,7 @@ export function AxisScale({
                   {labelled.has(n) ? (
                     <span
                       aria-hidden="true"
-                      className="absolute bottom-0 -translate-x-1/2 font-mono text-[10px] tabular-nums text-ink-faint"
+                      className="absolute bottom-0 -translate-x-1/2 font-mono text-[10px] tabular-nums text-ink-soft"
                       style={{ left: `${(n / total) * 100}%`, bottom: majorHeight + 3 }}
                     >
                       {n}
@@ -153,7 +153,7 @@ export function AxisScale({
           <span className="font-mono text-[11px] uppercase tracking-eyebrow tabular-nums text-ink-soft">
             {readoutText}
           </span>
-          <span className="font-mono text-[11px] tabular-nums text-ink-faint">
+          <span className="font-mono text-[11px] tabular-nums text-ink-soft">
             {Math.round(percent)}%
           </span>
         </div>

@@ -32,7 +32,7 @@ function ReportHeading({ children, count }: { children: string; count?: string }
         {children}
       </h4>
       {count ? (
-        <span className="font-mono text-[11px] uppercase tracking-eyebrow tabular-nums text-ink-faint">
+        <span className="font-mono text-[11px] uppercase tracking-eyebrow tabular-nums text-ink-soft">
           {count}
         </span>
       ) : null}
@@ -45,7 +45,7 @@ function DecisionEntry({ stage, option }: { stage: ProjectStage; option: Project
   return (
     <li className="report-block rounded-sm border border-rule bg-paper-raised px-5 py-5 sm:px-6">
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <span className="num text-[12px] text-ink-faint">
+        <span className="num text-[12px] text-ink-soft">
           {String(stage.number).padStart(2, "0")}
         </span>
         <p className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
@@ -89,7 +89,7 @@ function DecisionEntry({ stage, option }: { stage: ProjectStage; option: Project
         <ul className="mt-2 space-y-1.5">
           {option.drawbacks.map((item, index) => (
             <li key={index} className="flex gap-2.5 text-[14px] leading-[1.55] text-ink-soft">
-              <span aria-hidden="true" className="mt-0.5 shrink-0 font-mono text-[12px] text-ink-faint">
+              <span aria-hidden="true" className="mt-0.5 shrink-0 font-mono text-[12px] text-ink-soft">
                 −
               </span>
               <span>{ticks(item, `${key}-d-${index}`)}</span>
@@ -143,7 +143,7 @@ export function ConceptReport() {
       <div className="concept-report rounded-sm border border-rule bg-paper-raised px-5 py-6 shadow-panel sm:px-8 sm:py-8">
         {/* Status first. A reader who does not know what a document is cannot read it. */}
         <div className="report-panel rounded-sm border border-amber/30 bg-amber-wash px-4 py-4 sm:px-5">
-          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber">
+          <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber-ink">
             Status of this document — read first
           </p>
           <div className="measure mt-2 space-y-3 text-[15px] leading-[1.65] text-ink">
@@ -172,7 +172,7 @@ export function ConceptReport() {
           <div className="min-w-0">
             <p className="eyebrow">Concept report</p>
             <h3 className="mt-2 text-[24px] font-bold sm:text-[30px]">{projectBrief.title}</h3>
-            <p className="mt-2 font-mono text-[11px] uppercase tracking-eyebrow tabular-nums text-ink-faint">
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-eyebrow tabular-nums text-ink-soft">
               {ready
                 ? `${decided.length} of ${decisionStages.length} recorded decisions${
                     savedAt ? ` · saved ${savedAt}` : ""
@@ -242,7 +242,7 @@ export function ConceptReport() {
             <ul className="mt-3 space-y-2">
               {undecided.map((stage) => (
                 <li key={stage.id} className="flex gap-3 text-[15px] leading-[1.6] text-ink">
-                  <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-faint">
+                  <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-soft">
                     {String(stage.number).padStart(2, "0")}
                   </span>
                   <span>
@@ -265,7 +265,7 @@ export function ConceptReport() {
           <ul className="mt-3 space-y-2">
             {notYetDecidable.map((stage) => (
               <li key={stage.id} className="flex gap-3 text-[15px] leading-[1.6] text-ink">
-                <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-faint">
+                <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-soft">
                   {String(stage.number).padStart(2, "0")}
                 </span>
                 <span className="font-semibold">{stage.title}</span>
@@ -285,7 +285,7 @@ export function ConceptReport() {
             "A quantified budget, since every cost argument in this report rests on the single word 'modest'.",
           ].map((item, index) => (
             <li key={index} className="flex gap-3">
-              <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-faint">
+              <span aria-hidden="true" className="num mt-0.5 shrink-0 text-[12px] text-ink-soft">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span>{item}</span>

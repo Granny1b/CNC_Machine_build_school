@@ -512,7 +512,7 @@ export function MachineDrawing({
               <g
                 key={`leader-${component.id}`}
                 className={
-                  chosen ? "text-blue-bright" : dimmed ? "text-rule-strong" : "text-ink-faint"
+                  chosen ? "text-blue-bright" : dimmed ? "text-rule-strong" : "text-ink-soft"
                 }
               >
                 <path
@@ -538,7 +538,7 @@ export function MachineDrawing({
             ? "border-blue-bright bg-blue-bright text-paper-raised"
             : isEnabled
               ? "border-ink-soft bg-paper-raised text-ink hover:border-blue hover:text-blue"
-              : "border-rule bg-paper-sunk text-ink-faint";
+              : "border-rule bg-paper-sunk text-ink-soft";
           return (
             <button
               key={component.id}

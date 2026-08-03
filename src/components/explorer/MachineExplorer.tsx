@@ -126,7 +126,7 @@ export function MachineExplorer({ lessonTitles = {} }: MachineExplorerProps) {
               ].join(" ")}
             >
               {option.label}
-              <span className={`num text-[10px] ${active ? "opacity-80" : "text-ink-faint"}`}>
+              <span className={`num text-[10px] ${active ? "opacity-80" : "text-ink-soft"}`}>
                 {countFor(option.id)}
               </span>
             </button>
@@ -197,7 +197,7 @@ export function MachineExplorer({ lessonTitles = {} }: MachineExplorerProps) {
                     <span className="block truncate text-[15px] font-medium text-ink">
                       {component.name}
                     </span>
-                    <span className="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-faint">
+                    <span className="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-soft">
                       {SYSTEM_LABEL[component.system]}
                     </span>
                   </span>

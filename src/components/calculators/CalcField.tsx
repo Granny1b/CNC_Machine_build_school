@@ -237,7 +237,7 @@ export function WorkedExample({ title, intro, givens, steps, siNote }: WorkedExa
         {steps.map((step, index) => (
           <li key={step.label} className="px-5 py-4 sm:px-6">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="num text-[11px] text-ink-faint">
+              <span className="num text-[11px] text-ink-soft">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="font-display text-[15px] font-semibold tracking-tightest text-ink">
@@ -247,7 +247,7 @@ export function WorkedExample({ title, intro, givens, steps, siNote }: WorkedExa
             <div className="mt-2 overflow-x-auto">
               <p className="whitespace-nowrap font-mono text-[13px] tabular-nums text-ink-soft">
                 {step.expression}
-                <span className="mx-2 text-ink-faint">=</span>
+                <span className="mx-2 text-ink-soft">=</span>
                 <span className="font-medium text-blue-deep">{step.result}</span>
               </p>
             </div>

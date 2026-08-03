@@ -51,7 +51,7 @@ export function Field({
           disabled={disabled}
           aria-describedby={hint ? hintId : undefined}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full min-w-0 bg-transparent px-3 py-2 font-mono text-[15px] tabular-nums text-ink outline-none disabled:text-ink-faint"
+          className="w-full min-w-0 bg-transparent px-3 py-2 font-mono text-[15px] tabular-nums text-ink outline-none disabled:text-ink-soft"
         />
         {unit ? (
           <span className="flex shrink-0 items-center border-l border-rule bg-paper-sunk px-2.5 font-mono text-[12px] text-ink-soft">

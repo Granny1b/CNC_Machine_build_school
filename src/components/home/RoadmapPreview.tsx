@@ -63,7 +63,7 @@ export function RoadmapPreview() {
                       key={level.slug}
                       className="flex flex-wrap items-baseline gap-x-2 gap-y-1.5 border-t border-rule py-2.5 first:border-t-0"
                     >
-                      <span className="num shrink-0 text-[11px] text-ink-faint">
+                      <span className="num shrink-0 text-[11px] text-ink-soft">
                         L{pad(level.number)}
                       </span>
                       {/* A floor on the title's width makes the badge wrap to

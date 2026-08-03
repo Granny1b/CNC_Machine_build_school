@@ -152,7 +152,7 @@ export function GcodeHero() {
                   <span className="font-mono text-[11px] uppercase tracking-eyebrow text-ink-soft">
                     {item.label}
                   </span>
-                  <span className="text-[12px] leading-tight text-ink-faint">{item.meaning}</span>
+                  <span className="text-[12px] leading-tight text-ink-soft">{item.meaning}</span>
                 </li>
               ))}
             </ul>
@@ -189,7 +189,7 @@ export function GcodeHero() {
         {reduced ? <p className="text-ink">{HERO_REDUCED_MOTION_NOTE}</p> : null}
         <Prose text={HERO_CAPTION} />
         <Prose text={HERO_SI_NOTE} />
-        <p className="border-l-2 border-rule-strong pl-3 text-[13px] text-ink-faint">
+        <p className="border-l-2 border-rule-strong pl-3 text-[13px] text-ink-soft">
           <Prose text={HERO_EXAMPLE_NOTE} inline />
         </p>
       </figcaption>
