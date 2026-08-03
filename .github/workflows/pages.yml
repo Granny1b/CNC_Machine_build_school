@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+# Every route in this site is prerendered, so it can be served as static files.
+# `next.config.mjs` turns that into an actual export when STATIC_EXPORT is set,
+# and compiles in the `/<repo>/` prefix a Pages project site is served from.
+
+on:
+  push:
+    branches:
+      - main
+      - claude/spec-workflow-bzh99q
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it — a half-published site
+# is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        # Playwright is a dev dependency for `npm run sweep`, which needs a
+        # running server and does not run here. Skipping its browser download
+        # saves a couple of minutes and about 150 MB.
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Content integrity
+        run: npm run check:content
+
+      - name: G-code engine
+        run: npm run check:gcode
+
+      - name: Build static site
+        env:
+          STATIC_EXPORT: "true"
+          # A project site lives at https://<owner>.github.io/<repo>/, so links
+          # and assets need that prefix baked in at build time.
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}
+        run: npm run build
+
+      - name: Disable Jekyll
+        # Jekyll ignores directories beginning with an underscore, which would
+        # swallow _next entirely. The Actions deployment does not run Jekyll,
+        # but this keeps the artifact correct if the source is ever switched
+        # back to a branch.
+        run: touch out/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
