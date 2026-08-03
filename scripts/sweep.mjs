@@ -173,8 +173,16 @@ for (const width of WIDTHS) {
       for (const u of structure.unnamed.slice(0, 3)) fail(`[name] ${path} unnamed ${u}`);
     }
 
-    // A blocked font request is this harness's own doing, not a site defect.
-    const real = consoleErrors.filter((e) => !/net::ERR_|Failed to load resource/.test(e));
+    // Two classes of noise are this harness's own doing rather than site
+    // defects: the font stylesheet we abort above, and an RSC prefetch that was
+    // still in flight when the sweep navigated away — Next reports that one
+    // while saying in the same breath that it has handled it. A genuine RSC
+    // failure does not carry the fallback notice and still surfaces.
+    const real = consoleErrors.filter(
+      (e) =>
+        !/net::ERR_|Failed to load resource/.test(e) &&
+        !/Failed to fetch RSC payload[\s\S]*Falling back to browser navigation/.test(e),
+    );
     if (real.length) fail(`[${width}] ${path} console: ${real.slice(0, 2).join(" || ")}`);
   }
   notes.push(`${width}px: ${PAGES.length} routes${width === WIDTHS[WIDTHS.length - 1] ? `, ${contrastFails} contrast failures` : ""}`);

@@ -13,6 +13,7 @@
  */
 import { simulate } from "../src/lib/gcode";
 import type { SimulatedProgram } from "../src/lib/gcode/types";
+import { gcodeSamples } from "../src/content/gcode-samples";
 
 let failures = 0;
 let checks = 0;
@@ -214,7 +215,6 @@ function expectCode(name: string, program: SimulatedProgram, code: string, prese
 /* 13. The sample programs are all valid, and the faulty one is faulty */
 /* ------------------------------------------------------------------ */
 {
-  const { gcodeSamples } = await import("../src/content/gcode-samples");
   checks += 1;
   if (gcodeSamples.length < 6) fail("samples: at least six", `found ${gcodeSamples.length}`);
 

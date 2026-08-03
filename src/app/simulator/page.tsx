@@ -1,64 +1,40 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { Simulator } from "@/components/simulator/Simulator";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
   title: "G-code simulator",
   description:
-    "The G-code simulator is in development and this page says so plainly rather than showing you a mock-up. Here is what it will do, why it will never be able to drive a machine, and what you can use in the meantime.",
+    "Read a G-code program the way a control does: step through it block by block, watch the toolpath draw itself, see the modal state it leaves behind, and find the beginner mistakes. It runs entirely in your browser and cannot drive a machine.",
 };
 
 /**
- * The simulator route. SPEC.md section 8 requires an honest "in development"
- * state and explicitly forbids fake output, so this page renders no toolpath, no
- * coordinate readout and no disabled imitation of a tool that does not exist.
- * A greyed-out fake interface is still a claim that something is nearly there.
+ * The simulator route. SPEC.md section 16 item 1.
+ *
+ * The page composes; `Simulator` does the work. What the page owns is the
+ * framing: what this model is, what it is not, and the one constraint that
+ * bounds it — which stays in amber, because it is a machine-safety statement
+ * and not a note about software.
  */
 
-const PLANNED = [
-  {
-    title: "Parse a real program",
-    body: "Read a program you type or paste, block by block, and build the machine state each line leaves behind: units, absolute or incremental mode, plane, work offset, tool, spindle, feed. Parsing is the whole job — everything else is a view onto it.",
-  },
-  {
-    title: "Draw the toolpath",
-    body: "Render the path the program actually describes, in the same drawing language as the rest of this site: rapids and cutting moves distinguished, dimensions where they help, and the part outline for reference.",
-  },
-  {
-    title: "Show a coordinate readout",
-    body: "A digital-readout-style display of the commanded position as the program runs, in millimetres, so the numbers on the screen and the shape being drawn are visibly the same thing.",
-  },
-  {
-    title: "Highlight the active line",
-    body: "Keep the listing and the drawing locked together, so you can always see which line produced which piece of the path — the single most useful thing a simulator does for a beginner.",
-  },
-  {
-    title: "Explain every command",
-    body: "For each block, a plain-language sentence first and the correct terminology second: what the machine was asked to do, and which words are modal and therefore still in force on the next line.",
-  },
-  {
-    title: "Catch the classic beginner mistakes",
-    body: "Flag the errors that spoil parts and break tools: a rapid that passes through the material, a missing retract before a move across the part, a plunge at the cutting feed rate, an incremental move written as though it were absolute, a missing tool length offset, a feed with no spindle speed.",
-  },
-];
-
-const AVAILABLE = [
-  {
-    href: "/",
-    label: "The G-code strip on the home page",
-    body: "A real, valid sixteen-line contour program running against its own toolpath drawing and a live readout, with a plain-language explanation of every line. It is not a simulator: the program is fixed and pre-computed rather than parsed, so you cannot edit it. What it does show is exactly the relationship the simulator will make interactive.",
-  },
+const RELATED = [
   {
     href: "/learn/understanding-xyz",
-    label: "The lessons on coordinates and motion",
-    body: "Where the ideas a simulator relies on are taught: axis conventions, part zero, work and tool offsets, absolute against incremental positioning, and how a controlled path is produced at all. Level 10 covers G-code itself and its topic list is published on the learning path, though its lessons are still to be written.",
+    label: "Coordinates, part zero and offsets",
+    body: "The ideas the simulator assumes you have met: axis conventions, where zero is, work and tool offsets, and absolute against incremental positioning.",
   },
   {
     href: "/calculators",
-    label: "The calculators",
-    body: "The speeds, feeds and removal-rate figures a program embeds in its F and S words, worked from the formulas with the units stated — plus a first estimate of the thrust and torque an axis needs to produce those moves.",
+    label: "Speeds, feeds and removal rate",
+    body: "Where the numbers behind an F and an S word come from, worked from the formulas with the units stated rather than copied off a chart.",
+  },
+  {
+    href: "/",
+    label: "The G-code strip on the home page",
+    body: "The same relationship as a fixed, pre-computed figure: one real contour program, its path and its readout, running on a loop.",
   },
 ];
 
@@ -66,64 +42,56 @@ export default function SimulatorPage() {
   return (
     <>
       <PageHeader
-        eyebrow="G-code simulator · In development"
-        title="The simulator is not built yet"
-        intro="This page would normally show a program listing, a toolpath and a coordinate readout. It does not, because none of that exists yet, and a mock-up of a tool that cannot run would teach you something false about your own program."
+        eyebrow="G-code simulator"
+        title="Read a program the way the machine reads it"
+        intro="Step through a program one block at a time and watch what each line does: where the tool goes, what modes it leaves in force, and which of the classic beginner mistakes it has just made."
       >
         <p className="measure text-[15px] leading-[1.65] text-ink-soft">
-          The simulator is the first item on the roadmap beyond the current phase, and it is real
-          engineering: a parser, a motion model and a renderer. Below is what it will do, the one
-          constraint that will always bound it, and the parts of the site that already teach what it
-          is for.
+          Everything here is a teaching model of a control, working in millimetres and millimetres
+          per minute, running in your browser. Load a sample or paste your own program; the listing,
+          the drawing and the readout are three views of the same simulated run, so clicking a line
+          moves the drawing and clicking a move in the drawing moves the listing.
         </p>
       </PageHeader>
 
-      <Container as="section" className="py-10 sm:py-14">
-        <h2 className="text-[22px] font-semibold sm:text-[26px]">What it will do</h2>
-        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {PLANNED.map((item) => (
-            <li key={item.title}>
-              <Card tone="raised" className="h-full">
-                <CardBody>
-                  <h3 className="font-display text-[17px] font-semibold tracking-tightest text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-[15px] leading-[1.6] text-ink-soft">{item.body}</p>
-                </CardBody>
-              </Card>
-            </li>
-          ))}
-        </ul>
-
-        {/* Amber, because this is a machine-safety constraint and nothing else. */}
-        <div className="mt-10 rounded-sm border border-amber/30 bg-amber-wash px-5 py-5">
+      <Container as="section" className="pt-10 sm:pt-14">
+        {/* Amber, because this is a machine-safety statement and nothing else. */}
+        <div className="rounded-sm border border-amber/30 bg-amber-wash px-5 py-5">
           <p className="font-mono text-[11px] uppercase tracking-eyebrow text-amber-ink">
-            A constraint on the design, not a limitation of the first version
+            A constraint on the design, not a limitation of this version
           </p>
           <div className="measure mt-2 space-y-3 text-[16px] leading-[1.65] text-ink">
             <p>
-              The simulator will run entirely in your browser, and it must never be capable of
-              driving hardware. It will have no connection to a machine, no serial or network output
-              and no route by which a program could be sent to a control. That is a deliberate
-              design rule, and it will not be relaxed later.
+              This simulator runs entirely in your browser, and it is not capable of driving
+              hardware. It has no connection to a machine, no serial or network output, and no route
+              by which a program could be sent to a control. That is a deliberate design rule, and
+              it will not be relaxed later.
             </p>
             <p>
               The reason is simple. A program that looks correct in a simulation can still be wrong
-              on a machine: the simulator does not know your fixture, your clamps, your tool
-              lengths, your work offsets, your machine&rsquo;s travels or what is actually sitting on
-              the table. Proving out a program on a real machine is a skilled, hazardous operation
+              on a machine: this model does not know your fixture, your clamps, your tool lengths,
+              your work offsets, your machine&rsquo;s travels or what is actually sitting on the
+              table. Proving out a program on a real machine is a skilled, hazardous operation
               carried out by competent people using the machine&rsquo;s own verification features, at
               reduced rapid and feed, under the applicable law and standards. A teaching tool has no
               business standing anywhere near that, so it is built without the ability to try.
+            </p>
+            <p>
+              So a clean run here means the program says what you think it says. It does not mean
+              the program is safe to cut.
             </p>
           </div>
         </div>
       </Container>
 
+      <Container as="section" width="wide" className="py-8 sm:py-10">
+        <Simulator />
+      </Container>
+
       <Container as="section" className="border-t border-rule pb-16 pt-10 sm:pb-24">
-        <h2 className="text-[22px] font-semibold sm:text-[26px]">What you can use today</h2>
+        <h2 className="text-[22px] font-semibold sm:text-[26px]">Where this fits</h2>
         <ul className="mt-6 space-y-4">
-          {AVAILABLE.map((item) => (
+          {RELATED.map((item) => (
             <li key={item.href}>
               <Card tone="sunk">
                 <CardBody className="flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
