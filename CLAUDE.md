@@ -7,9 +7,10 @@ designing a custom CNC milling machine.
 the single source of truth for the stack, the design system, the content model
 and the phase plan.
 
-**Current phase:** Phases 0–10 complete. Every item in SPEC section 15 is
-verified. Next work comes from SPEC section 16 (roadmap), starting with the
-G-code simulator — `/simulator` is currently an honest "in development" stub.
+**Current phase:** Phases 0–10 complete, every item in SPEC section 15
+verified, and SPEC section 16 item 1 (the G-code simulator) built. Next work
+comes from the rest of section 16 — the remaining thirteen levels of lesson
+content are the largest item.
 
 ```bash
 npm run dev        # http://localhost:3000

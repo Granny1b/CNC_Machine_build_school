@@ -13,9 +13,10 @@ import { pluralise } from "@/lib/format";
  * called, and carry no numerals: counts belong in the mono `meta` line, and they
  * are read from the content registries so this list cannot drift out of date.
  *
- * The G-code simulator is listed honestly. SPEC section 8 and section 16 put it
- * in the next roadmap phase, and its page declares itself in development rather
- * than faking output — so this card says the same thing.
+ * `inDevelopment` sets nothing today — the simulator was the last card using it,
+ * and SPEC section 16 item 1 is now built. It stays because the roadmap has six
+ * more items and the next one to land will want exactly this: a card that links
+ * to an honest "not built yet" page rather than being quietly absent.
  */
 
 interface Tool {
@@ -70,13 +71,12 @@ const tools: Tool[] = [
     href: "/glossary",
   },
   {
-    tag: "Roadmap",
+    tag: "Interactive",
     title: "G-code simulator",
     description:
-      "Not built yet, and its page says so rather than showing invented output. When it arrives it will parse a program, draw the toolpath, follow the coordinates block by block, explain each command and flag the mistakes that crash machines.",
-    meta: "next roadmap phase · browser only · never able to drive hardware",
+      "Load a sample or write your own, then step through it a block at a time. The listing, the toolpath and the coordinate readout are three views of the same run, every command is explained in plain language, and the mistakes that spoil parts are flagged with what they would actually do.",
+    meta: "7 sample programs · browser only · never able to drive hardware",
     href: "/simulator",
-    inDevelopment: true,
   },
 ];
 

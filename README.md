@@ -25,7 +25,8 @@ npm run dev            # http://localhost:3000
 npm run build          # must pass before any phase is considered done
 npm run typecheck      # tsc --noEmit, must be clean
 npm run check:content  # content integrity: cross-references, depth, no placeholders
-npm run verify         # typecheck + check:content + build
+npm run check:gcode    # G-code engine: hand-computed arcs, units, diagnostics
+npm run verify         # typecheck + check:content + check:gcode + build
 npm run sweep          # drives a real browser; needs the site already running
 ```
 
@@ -61,7 +62,7 @@ Both checks exit non-zero on failure, so either can gate a release.
 | `/explorer` | The machine explorer: an interactive cutaway of a vertical machining centre, 24 components |
 | `/calculators` | Machining and axis-sizing calculators |
 | `/troubleshooting` | Fault-finding scenarios, graded by what each step costs you |
-| `/simulator` | The G-code simulator. In development, and this page says so rather than faking output |
+| `/simulator` | The G-code simulator: load or write a program, step through it, and read what each block does and what is wrong with it |
 | `/glossary` | Every term the course uses, searchable and tag-filtered |
 | `/project` | Design your CNC: twenty stages and a printable concept report |
 | `/progress` | Completion, quiz history, scenario results, saved decisions, reset |
@@ -124,11 +125,11 @@ design project, and finally progress plus documentation — are implemented.
 
 Shipped: 20 levels, 7 lessons, 118 glossary terms, 24 explorer components, 2
 calculators, 2 troubleshooting scenarios, 20 project stages (10 carrying full
-decision data), and local progress tracking behind a store interface that a cloud
-adapter can replace without touching a component.
+decision data), local progress tracking behind a store interface that a cloud
+adapter can replace without touching a component, and the G-code simulator —
+the first item of `SPEC.md` section 16.
 
-Not built: the G-code simulator, and the lessons for fifteen levels. Both are
-declared as such on the site itself. `CLAUDE.md` holds the current phase pointer;
+Not built: the lessons for fifteen levels, declared as such on the site itself. `CLAUDE.md` holds the current phase pointer;
 `docs/roadmap.md` holds the detail, level by level and stage by stage.
 
 ---
@@ -178,5 +179,4 @@ is not the authority on any specific number you will need.
   a glossary term, a calculator, an explorer component, a scenario or a project
   stage, and the content rules an author must not break
 - [`docs/roadmap.md`](docs/roadmap.md) — what shipped, the fifteen unwritten
-  levels named individually, the project stages still to gain decision data, and
-  the simulator
+  levels named individually, and the project stages still to gain decision data

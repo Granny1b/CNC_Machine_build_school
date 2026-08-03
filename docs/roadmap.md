@@ -31,7 +31,7 @@ Two vocabularies overlap in this repo and it is worth separating them once:
 | Troubleshooting | 2 fully playable scenarios, every option graded and answered, results persisted |
 | Design project | 20 stages against one fictional brief; stages 1–10 with full decision data; a printable concept report assembled from actual choices |
 | Progress | `LocalProgressStore` behind the `ProgressStore` interface, the axis-scale readout, and `/progress` with completion, quiz history, scenario results, saved decisions and reset |
-| Honest stubs | `/simulator` declares itself in development and renders no fake output |
+| G-code simulator | Roadmap item 1, built: parser, interpreter, 19 lint rules, 7 sample programs, and no route to hardware |
 
 `npm run check:content` prints the current tallies for all of the above. Trust it
 over this table.
@@ -142,8 +142,9 @@ must teach how to *specify* and *brief*, never how to implement.
 ### 1. G-code simulator
 
 Parser, toolpath rendering, coordinate readout, active-line highlight,
-per-command explanation, beginner-mistake detection. `/simulator` describes the
-intended behaviour in full and shows none of it.
+per-command explanation, beginner-mistake detection. **Built.** The engine is
+`src/lib/gcode/`, pure functions over data with `simulate()` as the single entry
+point; `npm run check:gcode` holds it to a hundred hand-computed assertions.
 
 **The non-negotiable constraint: browser only. It must never be capable of
 driving hardware** — no serial output, no network output, no route by which a
