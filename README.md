@@ -50,20 +50,42 @@ BASE=http://localhost:3000 npm run sweep
 
 Both checks exit non-zero on failure, so either can gate a release.
 
-### Static export
+### Static export and hosting
 
 Every route is prerendered, so the site can also be built as plain files:
 
 ```bash
-STATIC_EXPORT=true PAGES_BASE_PATH=/CNC_Machine_build_school npm run build
+STATIC_EXPORT=true npm run build
 ```
 
-That writes `out/`, which is what `.github/workflows/pages.yml` publishes to
-GitHub Pages on every push. `PAGES_BASE_PATH` compiles in the `/<repo>/` prefix a
-Pages project site is served from; leave it unset to export for a domain root.
-The export is only possible because there are no route handlers, no server
-actions and no request-time data — if that ever changes, this build is where it
-will show up first.
+That writes `out/` — 67 files, about 6.7 MB. The export is only possible because
+there are no route handlers, no server actions and no request-time data. If that
+ever changes, this build is where it will show up first.
+
+The site is published twice from that one export:
+
+| Deployment | Workflow | Build variables |
+|---|---|---|
+| **Azure Static Web Apps** — canonical | `.github/workflows/azure.yml` | `STATIC_EXPORT` |
+| GitHub Pages — archived copy | `.github/workflows/pages.yml` | `STATIC_EXPORT`, `PAGES_BASE_PATH`, `SITE_DEPRECATED`, `PRIMARY_SITE_URL` |
+
+Azure serves from the root of its own hostname, so it needs no path prefix.
+GitHub Pages serves a project site from `/<repo>/`, which is what
+`PAGES_BASE_PATH` compiles in. `SITE_DEPRECATED` adds the notice bar and the
+per-page `rel="canonical"` that hands search ranking to Azure; it is inert
+unless `PRIMARY_SITE_URL` is also set, so a partial setup degrades to an
+ordinary site rather than a banner linking nowhere. See `src/lib/site.ts`.
+
+To reproduce the archived build locally:
+
+```bash
+STATIC_EXPORT=true PAGES_BASE_PATH=/CNC_Machine_build_school \
+  SITE_DEPRECATED=true PRIMARY_SITE_URL=https://example.azurestaticapps.net \
+  npm run build
+```
+
+Setting up Azure from scratch, the cost model, and custom domains:
+[`docs/azure-deployment.md`](docs/azure-deployment.md).
 
 ---
 
@@ -195,3 +217,6 @@ is not the authority on any specific number you will need.
   stage, and the content rules an author must not break
 - [`docs/roadmap.md`](docs/roadmap.md) — what shipped, the fifteen unwritten
   levels named individually, and the project stages still to gain decision data
+- [`docs/azure-deployment.md`](docs/azure-deployment.md) — standing up the Azure
+  Static Web App step by step, what it costs, custom domains, and retiring the
+  archived GitHub Pages copy

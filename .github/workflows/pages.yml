@@ -1,5 +1,14 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (archived copy)
 
+# DEPRECATED. The canonical site is the Azure Static Web App published by
+# `.github/workflows/azure.yml`. This workflow is kept running only so the
+# existing Pages URL does not break for anyone who has bookmarked or linked it.
+#
+# The difference between the two deployments is entirely in the environment
+# below: this one sets SITE_DEPRECATED, which adds the notice bar and the
+# canonical link handing search ranking to Azure. Delete this file once the old
+# URL has stopped receiving traffic.
+#
 # Every route in this site is prerendered, so it can be served as static files.
 # `next.config.mjs` turns that into an actual export when STATIC_EXPORT is set,
 # and compiles in the `/<repo>/` prefix a Pages project site is served from.
@@ -8,7 +17,6 @@ on:
   push:
     branches:
       - main
-      - claude/spec-workflow-bzh99q
   workflow_dispatch:
 
 permissions:
@@ -56,6 +64,15 @@ jobs:
           # A project site lives at https://<owner>.github.io/<repo>/, so links
           # and assets need that prefix baked in at build time.
           PAGES_BASE_PATH: /${{ github.event.repository.name }}
+          # Marks this copy as the archived one. Set as a repository variable
+          # rather than hardcoded, because the Azure hostname is assigned when
+          # the Static Web App is created.
+          #
+          # If PRIMARY_SITE_URL is unset the notice is suppressed and this
+          # builds as an ordinary site — see `src/lib/site.ts`. A banner
+          # pointing at nothing would be worse than no banner.
+          SITE_DEPRECATED: "true"
+          PRIMARY_SITE_URL: ${{ vars.PRIMARY_SITE_URL }}
         run: npm run build
 
       - name: Disable Jekyll

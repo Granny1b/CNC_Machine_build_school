@@ -1,0 +1,81 @@
+name: Deploy to Azure Static Web Apps
+
+# The canonical deployment. The same static export that used to go only to
+# GitHub Pages is published here, minus the `/<repo>/` path prefix, because a
+# Static Web App is served from the root of its own hostname.
+#
+# `.github/workflows/pages.yml` still runs and still publishes, but that copy is
+# now built with SITE_DEPRECATED set so it carries a notice pointing here. When
+# the old URL has stopped receiving traffic, delete that workflow and this one
+# is all that is left.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A half-published site is worse than a slightly stale one, so let a running
+# deploy finish rather than cancelling it.
+concurrency:
+  group: azure-swa
+  cancel-in-progress: false
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        # Playwright is a dev dependency for `npm run sweep`, which needs a
+        # running server and does not run here. Skipping its browser download
+        # saves a couple of minutes and about 150 MB.
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Content integrity
+        run: npm run check:content
+
+      - name: G-code engine
+        run: npm run check:gcode
+
+      - name: Build static site
+        env:
+          STATIC_EXPORT: "true"
+          # No PAGES_BASE_PATH. A Static Web App is served from the root of its
+          # hostname, so links and assets stay root-relative. Setting it here
+          # would prefix every asset with a directory that does not exist.
+        run: npm run build
+
+      - name: Add Azure routing config
+        # Azure reads this from the deployed artifact, not the repository root,
+        # so it has to be copied in beside the exported pages. Keeping it out of
+        # `public/` means the GitHub Pages artifact stays free of a file that
+        # only Azure understands.
+        run: cp staticwebapp.config.json out/
+
+      - name: Deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          # `out` is already built, so Oryx must not try to build it again.
+          # Without skip_app_build the deploy would attempt its own npm build
+          # inside the artifact and fail.
+          app_location: out
+          output_location: ""
+          skip_app_build: true
+          skip_api_build: true

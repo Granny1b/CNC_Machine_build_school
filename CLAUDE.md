@@ -24,3 +24,16 @@ Both `check:content` and `sweep` are part of the definition of done, and they
 catch different things: the first checks facts about the content data, the
 second checks facts about the rendered page. Run both before calling work
 finished.
+
+## Hosting
+
+The canonical site is an **Azure Static Web App** (`.github/workflows/azure.yml`),
+served from a static export. GitHub Pages still publishes an **archived copy**
+that carries a notice bar and a canonical link pointing at Azure; it is the same
+export built with `SITE_DEPRECATED` and `PRIMARY_SITE_URL` set. The switch lives
+in `src/lib/site.ts`, alongside the `STATIC_EXPORT` / `PAGES_BASE_PATH` switches
+in `next.config.mjs`.
+
+Setup and cost: `docs/azure-deployment.md`. The site must stay fully
+prerenderable — adding a route handler, a server action or request-time data
+breaks the static export and with it the free hosting.

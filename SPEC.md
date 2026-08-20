@@ -78,9 +78,11 @@ defect, not a style disagreement.
 | Styling | Tailwind CSS 3.4, tokens in `tailwind.config.ts` | One place to retune the visual language |
 | Charts | Recharts | Only for genuine engineering graphs (motion profile, torque/power). All technical *diagrams* are hand-authored SVG |
 | Diagrams | Hand-authored inline SVG components | Crisp at any size, themeable via `currentColor`, matches the drawing aesthetic |
-| Persistence | `localStorage` behind a `ProgressStore` interface | Phase 1 is local-only, but the interface is written so a Supabase/Postgres adapter drops in without touching components |
+| Persistence | `localStorage` behind a `ProgressStore` interface | Phase 1 is local-only, but the interface is written so a Supabase/Postgres adapter drops in without touching components. Note that `localStorage` is scoped to an origin, so progress does not follow a learner across a change of hostname |
 | State | React context for progress; local state elsewhere | No global state library needed at this size |
 | Fonts | Google Fonts via `<link>` in `layout.tsx`, **not** `next/font/google` | `next/font` fetches at build time; a link tag keeps builds working in restricted/offline CI. Always declare full fallback stacks |
+| Hosting | Azure Static Web Apps, Free plan, from a static export | Every route prerenders, so no server is rented. £0 up to 100 GB/month, free automatic SSL. **Never deploy this as `npm start` on App Service or Container Apps** — that pays for a VM to serve files that need none |
+| Legacy host | GitHub Pages, kept as an archived copy | Old links keep working. Built with `SITE_DEPRECATED` so it carries a notice bar and a per-page `rel="canonical"` pointing at Azure. Delete `.github/workflows/pages.yml` when the URL goes quiet |
 
 ### Commands
 
